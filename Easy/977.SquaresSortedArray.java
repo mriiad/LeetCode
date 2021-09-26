@@ -50,7 +50,31 @@ class Solution {
     }
 }
 
-
+// Something better: credit to https://leetcode.com/Zaidzack/
+// the key: comparing two values using 'abs' function instead of 'pow' which adds more complexity
+/*
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+        int [] output = new int[nums.length];
+        for(int i = nums.length - 1; i >= 0; i--)
+        {
+            if(Math.abs(nums[end]) < Math.abs(nums[start]))
+            {
+                output[i] = nums[start]*nums[start];
+                start++;
+            }
+            else
+            {
+                output[i] = nums[end]*nums[end];
+                end--;
+            }
+        }
+        return output;
+    }
+}
+*/
 
 // Submissions:
 /*
