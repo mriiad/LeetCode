@@ -1,0 +1,70 @@
+/*
+Given a string s, reverse only all the vowels in the string and return it.
+
+The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.
+
+ 
+
+Example 1:
+
+Input: s = "hello"
+Output: "holle"
+Example 2:
+
+Input: s = "leetcode"
+Output: "leotcede"
+
+Constraints:
+
+1 <= s.length <= 3 * 105
+s consist of printable ASCII characters.
+*/
+
+
+
+// ###################################################
+// ##                                               ##
+// ##                   Solution                    ##
+// ##                                               ##
+// ###################################################
+class Solution {
+    public String reverseVowels(String s) {
+        char[] ch = s.toCharArray();
+        int i = 0;
+        int j = s.length() - 1;
+        char temp;
+        while(i < j){
+            if(!isVowel(ch[i]) && !isVowel(ch[j])){
+                i++;
+                j--;
+            }else if(!isVowel(ch[i])){
+                i++;
+            }else if(!isVowel(ch[j])){
+                j--;
+            }else{ //(isVowel(s.chatAt(i)) && isVowel(s.chatAt(j)))
+                if(ch[i] != ch[j]){
+                    temp = ch[i];
+                    ch[i] = ch[j];
+                    ch[j] = temp;
+                }
+                i++;
+                j--;
+            }
+        }
+        return new String(ch);
+    }
+    
+    private boolean isVowel(char c){
+        if(c == 'a' || c == 'A' || c == 'e' || c == 'E' //
+           || c == 'i' || c == 'I' || c == 'o' || c == 'O' //
+           || c == 'u' || c == 'U')
+            return true;
+        return false;
+    }
+}
+
+// Submissions:
+/*
+Runtime: 5 ms, faster than 58.28% of Java online submissions for Reverse Vowels of a String.
+Memory Usage: 41.9 MB, less than 27.61% of Java online submissions for Reverse Vowels of a String.
+*/
